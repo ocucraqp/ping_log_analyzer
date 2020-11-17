@@ -3,7 +3,7 @@ from . import get_args, get_logs
 
 def output_failure_period(log_file_path):
     """
-    故障状態のサーバアドレスとそのサーバの故障期間を出力
+    故障状態のサーバアドレスとそのサーバの故障期間をミリ秒で出力
     :param log_file_path: ログファイルのパス
     :return:
     """
