@@ -6,6 +6,7 @@ from . import get_args, get_logs
 def output_failure_period(log_file_path, N=1, m=-1, t=-1, network_flg=False):
     """
     故障状態のサーバアドレスとそのサーバの故障期間をミリ秒で出力
+    :param network_flg: ネットワークの故障期間を出力するか
     :param log_file_path: ログファイルのパス
     :param N: N回以上のタイムアウトで故障とみなす
     :param m, t: 直近m回の平均応答時間がtミリ秒を超えた場合に過負荷状態とみなす
@@ -74,35 +75,46 @@ def output_failure_period(log_file_path, N=1, m=-1, t=-1, network_flg=False):
             print('    Overload End  :Overload conditions')
 
     # ネットワーク故障状態の出力
-    for network in networks.values():
-        timeout_start_time = -1
+    if network_flg:
+        for network in networks.values():
+            timeout_start_time = -1
 
-        for res in network.ping_response:
-            ip, confirm_time, response_time = res
+            for res in network.ping_response:
+                ip, confirm_time, response_time = res
 
-            # タイムアウト時の処理
-            if response_time == -1:
-                if network.ip_condition[ip] < N:
-                    network.ip_condition[ip] += 1
-                if sum(network.ip_condition.values()) >= N * len(network.ip_condition) and timeout_start_time == -1:
-                    timeout_start_time = confirm_time * 1000
-            else:
-                # 故障期間の出力
-                if sum(network.ip_condition.values()) >= N * len(network.ip_condition):
-                    print('Network:{}'.format(network.subnet))
-                    print('    Timeout Start:{}'.format(timeout_start_time))
-                    print('    Timeout End  :{}'.format(confirm_time * 1000 + response_time))
-                    network.ip_condition[ip] = 0
-                    timeout_start_time = -1
+                # タイムアウト時の処理
+                if response_time == -1:
+                    if network.ip_condition[ip] < N:
+                        network.ip_condition[ip] += 1
+                    if sum(network.ip_condition.values()) >= N * len(network.ip_condition) and timeout_start_time == -1:
+                        timeout_start_time = confirm_time * 1000
+                else:
+                    # 故障期間の出力
+                    if sum(network.ip_condition.values()) >= N * len(network.ip_condition):
+                        print('Network:{}'.format(network.subnet))
+                        print('    Timeout Start:{}'.format(timeout_start_time))
+                        print('    Timeout End  :{}'.format(confirm_time * 1000 + response_time))
+                        network.ip_condition[ip] = 0
+                        timeout_start_time = -1
 
-        # 監視終了時の状態出力
-        if sum(network.ip_condition.values()) >= N * len(network.ip_condition):
-            print('Network:{}'.format(network.subnet))
-            print('    Timeout Start:{}'.format(timeout_start_time))
-            print('    Timeout End  :Fault condition')
+            # 監視終了時の状態出力
+            if sum(network.ip_condition.values()) >= N * len(network.ip_condition):
+                print('Network:{}'.format(network.subnet))
+                print('    Timeout Start:{}'.format(timeout_start_time))
+                print('    Timeout End  :Fault condition')
 
 
 if __name__ == '__main__':
     args = get_args.get_args()
     log_file_path = args.log
-    output_failure_period(log_file_path)
+    try:
+        N = int(args.N)
+    except TypeError as e:
+        N = 1
+    try:
+        m = int(args.m)
+        t = int(args.t)
+    except TypeError as e:
+        m = -1
+        t = -1
+    output_failure_period(log_file_path, N, m, t)
