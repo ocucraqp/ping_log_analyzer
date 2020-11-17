@@ -115,6 +115,8 @@ def output_failure_period(log_file_path, N=1, m=-1, t=-1, task=1):
             if sum(network.ip_condition.values()) >= N * len(network.ip_condition):
                 outputs += output('Network', network.subnet, 'Timeout', timeout_start_time)
 
+    return outputs
+
 # if __name__ == '__main__':
 #     args = get_args.get_args()
 #     log_file_path = args.log
