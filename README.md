@@ -48,7 +48,9 @@ python -m ping_log_analyzer <log_file_name>
 5. Exit
 
 Please what you want to output: 2
+Please input Indicators of failure: 3
 ```
+
 
 ### Task3
 
