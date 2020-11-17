@@ -29,6 +29,7 @@ python -m ping_log_analyzer <log_file_name>
 2. Failure period after a certain number of timeouts
 3. Overload condition Period
 4. Network failure period for each subnet
+5. Exit
 
 Please what you want to output: 1
 ```
@@ -42,6 +43,7 @@ python -m ping_log_analyzer <log_file_name>
 2. Failure period after a certain number of timeouts
 3. Overload condition Period
 4. Network failure period for each subnet
+5. Exit
 
 Please what you want to output: 2
 ```
@@ -55,6 +57,7 @@ python -m ping_log_analyzer <log_file_name>
 2. Failure period after a certain number of timeouts
 3. Overload condition Period
 4. Network failure period for each subnet
+5. Exit
 
 Please what you want to output: 3
 ```
@@ -68,6 +71,7 @@ python -m ping_log_analyzer <log_file_name>
 2. Failure period after a certain number of timeouts
 3. Overload condition Period
 4. Network failure period for each subnet
+5. Exit
 
 Please what you want to output: 4
 ```

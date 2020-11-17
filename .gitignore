@@ -1,3 +1,5 @@
+.idea/
+
 # Don't manage logs other than sample_log.txt
 logs/*
 !sample_log.txt
