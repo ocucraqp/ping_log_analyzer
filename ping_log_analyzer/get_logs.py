@@ -1,6 +1,3 @@
-from . import get_args
-
-
 class Log:
     def __init__(self, confirm_time, ip, response_time):
         self.ip = ip
@@ -63,9 +60,3 @@ def get_logs(log_file_path):
             networks[subnet] = Network(int(confirm_time), ip, subnet, int(response_time))
 
     return logs, networks
-
-
-if __name__ == '__main__':
-    args = get_args.get_args()
-    log_file_path = args.log
-    get_logs(log_file_path)
