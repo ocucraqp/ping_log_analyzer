@@ -7,6 +7,7 @@ args = get_args.get_args()
 log_file_path = args.log
 task = int(args.task)
 
+# タスク毎に解析を実行
 if task == 1:
     failure_period.output_failure_period(log_file_path)
 elif task == 2:

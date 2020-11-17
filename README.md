@@ -51,7 +51,7 @@ optional arguments:
 
 ## 補足
 
-- ログ終了まで故障状態が終了しない場合は，`Fault condition`と出力される
+- ログ終了まで故障状態が終了しない場合は，`Timeout condition`と出力される
 - ログ終了まで過負荷状態が終了しない場合は，`Overload conditions`と出力される
 
 ## Author
