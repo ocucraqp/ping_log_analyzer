@@ -5,12 +5,37 @@ pingで得たログの解析を行う．
 ## 準備
 
 - Python:3.8
+- pipenv
 
 ```bash
 # リポジトリのクローン
 git clone https://github.com/ocucraqp/fixpoint_test.git
 cd fixpoint_test
+# テストを実行する場合
+pipenv install
 ```
+
+## ディレクトリ構成
+
+.  
+├── `Pipfile`  
+├── `Pipfile.lock`  
+├── `README.md`  
+├── `logs`  
+│　　　└── `sample_log.txt`  
+├── `ping_log_analyzer`(プロジェクト)  
+│　　　├── `__init__.py`  
+│　　　├── `__main__.py`  
+│　　　├── `failure_period.py`  
+│　　　├── `get_args.py`  
+│　　　└── `get_logs.py`  
+└── `tests`  
+　　├── `__init__.py`  
+　　├── `test_failure_period.py`  
+　　├── `test_log_answers`  
+　　│　　└── テストの解答  
+　　└── `test_logs`  
+　　　　　└── テスト用ログ  
 
 ## 使い方
 
@@ -27,6 +52,8 @@ python -m ping_log_analyzer logs/sample_log.txt 2 -N 2
 python -m ping_log_analyzer logs/sample_log.txt 3 -N 2 -m 2 -t 9
 # task4
 python -m ping_log_analyzer logs/sample_log.txt 4 -N 2
+# テストの実行
+pytest
 ```
 
 詳しい引数の使い方は以下の通りである
