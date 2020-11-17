@@ -1,14 +1,9 @@
-import argparse
 import sys
 
-from . import failure_period
-
-# 引数の処理
-parser = argparse.ArgumentParser()
-parser.add_argument('log', help='ログファイルのパス')
-args = parser.parse_args()
+from . import failure_period, get_args
 
 # ログファイルのパスの取得
+args = get_args.get_args()
 log_file_path = args.log
 
 # Taskの選択
@@ -21,7 +16,7 @@ print('1. Failure period\n'
 task_num = int(input('Please what you want to output: '))
 
 if task_num == 1:
-    failure_period.output_failure_period()
+    failure_period.output_failure_period(log_file_path)
 elif task_num == 2:
     pass
 elif task_num == 3:
