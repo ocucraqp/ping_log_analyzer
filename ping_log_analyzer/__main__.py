@@ -18,7 +18,8 @@ task_num = int(input('Please what you want to output: '))
 if task_num == 1:
     failure_period.output_failure_period(log_file_path)
 elif task_num == 2:
-    pass
+    N = int(input('Please input Indicators of failure: '))
+    failure_period.output_failure_period(log_file_path, N)
 elif task_num == 3:
     pass
 elif task_num == 4:
