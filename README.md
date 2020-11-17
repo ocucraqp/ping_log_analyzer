@@ -81,6 +81,11 @@ optional arguments:
 - ログ終了まで故障状態が終了しない場合は，`Timeout condition`と出力される
 - ログ終了まで過負荷状態が終了しない場合は，`Overload conditions`と出力される
 
+## テストについて
+テスト用のソースコードは`tests/test_failure_period.py`である．
+また，テストに用いているログとテストの解答はそれぞれ，`tests/test_logs`と`tests/test_log_answer`下に配置している．
+現段階で用意しているテスト8つに対してはすべて通過を確認している
+
 ## Author
 
 Masaya Ohura
