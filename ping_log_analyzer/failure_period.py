@@ -3,7 +3,7 @@ from statistics import mean
 from . import get_args, get_logs
 
 
-def output_failure_period(log_file_path, N=1, m=-1, t=-1, network_flg=False):
+def output_failure_period(log_file_path, N=1, m=-1, t=-1, task=1):
     """
     故障状態のサーバアドレスとそのサーバの故障期間をミリ秒で出力
     :param network_flg: ネットワークの故障期間を出力するか
@@ -14,8 +14,11 @@ def output_failure_period(log_file_path, N=1, m=-1, t=-1, network_flg=False):
     """
     logs, networks = get_logs.get_logs(log_file_path)
 
+    if task == 1:
+        N = 1
+
     overload_check_flg = False
-    if m > 0:
+    if task == 3:
         overload_check_flg = True
 
     for log in logs.values():
@@ -75,7 +78,7 @@ def output_failure_period(log_file_path, N=1, m=-1, t=-1, network_flg=False):
             print('    Overload End  :Overload conditions')
 
     # ネットワーク故障状態の出力
-    if network_flg:
+    if task == 4:
         for network in networks.values():
             timeout_start_time = -1
 
@@ -107,6 +110,7 @@ def output_failure_period(log_file_path, N=1, m=-1, t=-1, network_flg=False):
 if __name__ == '__main__':
     args = get_args.get_args()
     log_file_path = args.log
+    task = args.task
     try:
         N = int(args.N)
     except TypeError as e:
@@ -117,4 +121,4 @@ if __name__ == '__main__':
     except TypeError as e:
         m = -1
         t = -1
-    output_failure_period(log_file_path, N, m, t)
+    output_failure_period(log_file_path, N, m, t, task)

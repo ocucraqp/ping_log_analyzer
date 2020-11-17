@@ -12,7 +12,7 @@ if task == 1:
 elif task == 2:
     try:
         N = int(args.N)
-        failure_period.output_failure_period(log_file_path, N=N)
+        failure_period.output_failure_period(log_file_path, N=N, task=task)
     except TypeError as e:
         print('Error: Please input N', file=sys.stderr)
 elif task == 3:
@@ -20,17 +20,14 @@ elif task == 3:
         N = int(args.N)
         m = int(args.m)
         t = int(args.t)
-        failure_period.output_failure_period(log_file_path, m=m, t=t)
+        failure_period.output_failure_period(log_file_path, m=m, t=t, task=task)
     except TypeError as e:
         print('Error: Please input N, m, t', file=sys.stderr)
 elif task == 4:
     try:
         N = int(args.N)
-        failure_period.output_failure_period(log_file_path, N=N, network_flg=True)
+        failure_period.output_failure_period(log_file_path, N=N, task=task)
     except TypeError as e:
         print('Error: Please input N', file=sys.stderr)
-elif task == 5:
-    # exit
-    pass
 else:
-    print('Error: Please input 1~5', file=sys.stderr)
+    print('Error: Please input 1~4', file=sys.stderr)
