@@ -21,11 +21,13 @@ elif task_num == 2:
     N = int(input('Enter indicators of failure: '))
     failure_period.output_failure_period(log_file_path, N=N)
 elif task_num == 3:
+    N = int(input('Enter indicators of failure: '))
     m = int(input('Enter number of response times to account for overloads: '))
     t = int(input('Enter the average response time to be overloaded: '))
     failure_period.output_failure_period(log_file_path, m=m, t=t)
 elif task_num == 4:
-    pass
+    N = int(input('Enter indicators of failure: '))
+    failure_period.output_failure_period(log_file_path, N=N, network_flg=True)
 elif task_num == 5:
     # exit
     pass
