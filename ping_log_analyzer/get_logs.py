@@ -16,10 +16,15 @@ def get_logs(log_file_path):
     logs = {}
     for parse_log in parse_logs:
         confirm_time, ip, response_time = parse_log
+
+        if response_time == '-':
+            # pingがタイムアウト('-')した場合，response_timeは-1
+            response_time = -1
+
         if ip in logs:
-            logs[ip].add_ping_log(confirm_time, response_time)
+            logs[ip].add_ping_log(int(confirm_time), int(response_time))
         else:
-            logs[ip] = log.Log(confirm_time, ip, response_time)
+            logs[ip] = log.Log(int(confirm_time), ip, int(response_time))
 
     return logs
 

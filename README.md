@@ -34,7 +34,7 @@ python -m ping_log_analyzer <log_file_name>
 Please what you want to output: 1
 ```
 
-タイムアウト後，pingが応答しない場合は故障期間の代わりに`out of service`と出力される
+タイムアウト後，pingが応答しない場合は故障期間の代わりに`Out of Service`と出力される
 
 ### Task2
 
