@@ -9,8 +9,8 @@ pingで得たログの解析を行う．
 
 ```bash
 # リポジトリのクローン
-git clone https://github.com/ocucraqp/fixpoint_test.git
-cd fixpoint_test
+git clone https://github.com/ocucraqp/ping_log_analyzer.git
+cd ping_log_analyzer
 # テストを実行する場合
 pipenv install
 ```
